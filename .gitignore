@@ -1,0 +1,9 @@
+.DS_Store
+.skill/
+dist/
+tools/
+花少2解说精华版分析.txt
+*.log
+node_modules/
+.env
+.vercel

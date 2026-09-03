@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="测一测你的人格最像《花儿与少年》第二季中的哪位嘉宾？毛阿敏？许晴？宁静？郑爽？陈意涵？井柏然？还是杨洋？">
+  <meta property="og:title" content="花儿与少年2人格测试 · 谁是大姐？">
+  <meta property="og:description" content="基于B站UP主@小灰躺 心理学解说精心设计，38道题（含3大名场面附加题）测一测你是花少2里的哪一位！">
+  <meta property="og:image" content="./assets/guests/chen.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>花儿与少年2人格测试 · 你是哪位姐姐弟弟？</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="bg-decoration">
+      <div class="flower flower-1"></div>
+      <div class="flower flower-2"></div>
+      <div class="flower flower-3"></div>
+      <div class="flower flower-4"></div>
+    </div>
+
+    <!-- 首页 -->
+    <section id="page-home" class="page page-home active">
+      <div class="home-content">
+        <div class="logo-section">
+          <div class="logo-icon">
+            <img id="logo-img" class="logo-img" src="./assets/logo-cartoon.png" alt="花少2 logo">
+          </div>
+          <h1 class="main-title">谁是大姐？</h1>
+          <p class="sub-title">花儿与少年2人格测试</p>
+        </div>
+
+        <div class="intro-card">
+          <h3 class="intro-title">关于这次测试</h3>
+          <p class="intro-text">
+            2015年的《花儿与少年》第二季，被誉为内娱真人秀的"癫疯之作"。
+            7位性格迥异的嘉宾，在预算有限、节奏紧绷的异国旅途中，
+            将成年人社交里的拉扯、博弈、情绪爆发，赤裸裸地展现在镜头前。
+          </p>
+          <p class="intro-text">
+            现在我们基于b站up主@小灰躺 的解说精心设计了40道问题，测一测在这场"社交修罗场"中，你属于哪种花少人格？
+          </p>
+        </div>
+
+        <button id="btn-start" class="btn-primary btn-start">
+          <span>开始测试</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+        <p class="disclaimer">* 本测试仅供娱乐，结果仅供参考</p>
+      </div>
+    </section>
+
+    <!-- 答题页 -->
+    <section id="page-quiz" class="page page-quiz">
+      <div class="quiz-header">
+        <div class="progress-wrapper">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <div class="progress-text">
+            <span id="current-q">1</span> / <span id="total-q">35</span>
+          </div>
+        </div>
+        <button id="btn-back-home" class="btn-link">← 返回</button>
+      </div>
+
+      <div class="quiz-content">
+        <div class="category-badge" id="q-category">团队角色</div>
+        <h2 class="question-text" id="q-text"></h2>
+
+        <div class="options-list" id="options-list">
+          <!-- 选项由JS动态生成 -->
+        </div>
+      </div>
+
+      <div class="quiz-footer">
+        <button id="btn-prev" class="btn-secondary" disabled>
+          上一题
+        </button>
+        <button id="btn-next" class="btn-primary" disabled>
+          <span>下一题</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 结果页 -->
+    <section id="page-result" class="page page-result">
+      <div class="result-content">
+        <div class="result-loading" id="result-loading">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">正在分析你的性格...</p>
+        </div>
+
+        <div id="result-body" class="result-body hidden">
+          <div class="result-header">
+            <p class="result-label">你的人格最像</p>
+            <img id="result-photo" class="result-photo" alt="">
+            <div id="result-icon" class="result-icon">🌼</div>
+            <h1 id="result-name" class="result-name">毛阿敏</h1>
+            <h2 id="result-title" class="result-title">圆融通透的大姐大</h2>
+            <div class="match-percent">
+              <span id="result-match">92</span>% 匹配度
+            </div>
+          </div>
+
+          <div class="result-tags" id="result-tags">
+            <!-- 标签由JS生成 -->
+          </div>
+
+          <div class="result-desc-card">
+            <h3 class="desc-title">性格解读</h3>
+            <p id="result-desc" class="desc-text"></p>
+          </div>
+
+          <div class="result-chart-card">
+            <h3 class="desc-title">全员匹配雷达</h3>
+            <div class="chart-container">
+              <canvas id="radar-chart"></canvas>
+            </div>
+            <div class="chart-legend" id="chart-legend">
+              <!-- 图例由JS生成 -->
+            </div>
+          </div>
+
+          <div class="all-results" id="all-results">
+            <!-- 所有嘉宾匹配度列表 -->
+          </div>
+
+          <div class="result-actions">
+            <button id="btn-share" class="btn-primary">
+              分享我的结果
+            </button>
+            <button id="btn-restart" class="btn-secondary">
+              再测一次
+            </button>
+          </div>
+
+          <div class="share-tip" id="share-tip">
+            <p>📸 长按截图保存结果页</p>
+            <p>🎯 分享给朋友一起测一测吧！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分享遮罩 -->
+    <div id="share-mask" class="share-mask hidden">
+      <div class="share-mask-content">
+        <div class="share-arrow">→</div>
+        <p class="share-tip-text">点击右上角 · · ·</p>
+        <p class="share-tip-text">选择"分享给朋友"</p>
+        <p class="share-tip-text">或"发送到朋友圈"</p>
+        <button id="btn-close-share" class="btn-link-white">我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
