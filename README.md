@@ -49,36 +49,6 @@
 
 ---
 
-## 🚀 快速开始
-
-### 方式一：直接本地预览（3秒）
-纯静态项目，不需要安装任何依赖。
-
-```bash
-# 方式A：Python 3 一行起服务（推荐，Mac自带）
-python3 -m http.server 5173
-
-# 方式B：Node.js
-npx serve .
-```
-
-然后浏览器打开 → http://localhost:5173
-
-### 方式二：一键部署到 Vercel（10秒）
-点击页面顶部的 **「Deploy with Vercel」** 按钮，或：
-
-```bash
-npm i -g vercel
-vercel login
-vercel --prod   # 在项目根目录执行
-```
-
-Vercel 会自动读取根目录的 [vercel.json](file:///Users/mac/Documents/trae_projects/iAmSister/vercel.json)：
-- ✅ Clean URLs（自动去掉 `.html`）
-- ✅ 嘉宾头像图片：1年不可变长缓存
-- ✅ JS/CSS：1小时协商缓存
-
----
 
 ## 📁 项目结构（零构建工具）
 
